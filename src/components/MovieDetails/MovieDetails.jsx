@@ -1,11 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
+
 
 function MovieDetails() {
     const dispatch = useDispatch();
     const history = useHistory();
     const movieDetails = useSelector (store => store.movieDetails);
-    console.log('check out movieDetails', movieDetails[0]);
+    const genres = useSelector (store => store.genres)
+
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_GENRES',
+            payload: movieDetails.id
+        })
+    }, []);
 
     const handleGoBack =() =>{
         history.push('/');
@@ -13,14 +22,25 @@ function MovieDetails() {
 
     return (
         <>
-        {movieDetails.map(movie => (
-            <div key={movie.id}>
-                <h3>{movie.title}</h3>
-                <img src={movie.poster} alt={movie.title} />
-                <p>Genres: {movie.genres.join}</p>
-                <p>Descriptions: {movie.description}</p>
-            </div>
+        <div className="container">
+            <h1>Movie Details</h1>
+            <h3>{movieDetails.title}</h3>
+            <img src={movieDetails.poster} />
+            <h4>Move Description</h4>
+            <p>{movieDetails.description}</p><br></br>
+            <h3>Movie Genres</h3>
+            <table className="table">
+                <tbody>
+                {genres.map(genre => (
+            <tr key={genre}>
+                <td>{movieDetails.genre}</td>
+            </tr>
         ))}
+                </tbody>
+            </table>
+
+        </div>
+       
         <button onClick={handleGoBack}>Home Page</button>
         </>
     )

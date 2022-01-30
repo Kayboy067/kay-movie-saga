@@ -32,11 +32,11 @@ function* fetchAllMovies() {
 
 function* fetchMovieDetails(action) {
     try {
-        const movie = yield axios.get(`/api/movie${action.payload}`);
-        console.log('movie details:', movie.data);
-        yield put({type: 'SET_DETAILS', payload: movie.data})
-    } catch{
-        console.log('get all error');
+        const genres = yield axios.get('/api/genres', {params:{movieID: action.payload}});
+        console.log('get movie genres:', genres.data);
+        yield put({type: 'SET_MOVIE_DETAILS', payload: genres.data[0].array_agg})
+    } catch (err) {
+        console.log('get all error', err);
     }
     
 }
@@ -67,7 +67,7 @@ const genres = (state = [], action) => {
 // Used to store the movie details
 const movieDetails = (state = [], action) =>{
     switch (action.type) {
-        case 'SET_DETAILS':
+        case 'SET_MOVIE_DETAILS':
             return action.payload
         default:
             return state;
