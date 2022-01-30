@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import Button from '@mui/material/Button';
+import './MovieDetails.css'
 
 
 function MovieDetails() {
@@ -31,9 +32,9 @@ function MovieDetails() {
             <h3>{movieDetails.title}</h3>
             <img src={movieDetails.poster} />
             <h4>Move Description</h4>
-            <p>{movieDetails.description}</p><br></br>
+            <p className="description">{movieDetails.description}</p><br></br>
             <h3>Movie Genres</h3>
-            <p>{selectedGenres.genre_name}</p>
+            <p className="genres">{selectedGenres.genre_name}</p>
 
         </div>
         <Button variant="contained" disableElevation onClick={handleGoBack}>
