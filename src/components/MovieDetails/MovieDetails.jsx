@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
+import Button from '@mui/material/Button';
 
 
 function MovieDetails() {
@@ -40,8 +41,9 @@ function MovieDetails() {
             </table>
 
         </div>
-       
-        <button onClick={handleGoBack}>Home Page</button>
+        <Button variant="contained" disableElevation onClick={handleGoBack}>
+            Home Page
+        </Button>
         </>
     )
     
