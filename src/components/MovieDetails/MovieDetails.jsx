@@ -11,7 +11,7 @@ function MovieDetails() {
     const movieDetails = useSelector (store => store.movieDetails);
     const genres = useSelector (store => store.genres)
     console.log('genres', genres);
-    const selectedGenres = genres[movieDetails.id - 1];
+    const selectedGenres = genres[0]
 
 
     useEffect(() => {
