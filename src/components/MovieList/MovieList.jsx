@@ -34,7 +34,7 @@ function MovieList() {
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <Card key={movie.id} sx={{ maxWidth: 150 }} onClick={()=>handleImage (movie)}>
+                        <Card className="moviesView" key={movie.id} sx={{ maxWidth: 150 }} onClick={()=>handleImage (movie)}>
                             <CardMedia
                               component="img"
                               image={movie.poster}

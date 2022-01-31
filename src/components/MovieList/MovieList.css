@@ -1,4 +1,10 @@
 .movies {
     display : flex;
+    justify-content: center;
     flex-wrap: wrap;
+    margin: 2rem;
+}
+
+.moviesView:hover{
+    background: darkgray;
 }
